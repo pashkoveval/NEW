@@ -948,6 +948,7 @@ button {
 .shop__box {
   grid-template-columns: 1fr 3fr;
   margin-top: 40px;
+  position: relative;
 }
 
 .sidebar {
@@ -1078,13 +1079,44 @@ button {
 .mainbar {
   grid-template-columns: repeat(3, auto);
   grid-gap: 20px;
+  position: fixed;
+  top: 0;
+  left: 200px;
+  display: none;
+}
+
+.visible__pages {
+  z-index: 1;
+  display: grid;
+}
+
+.item {
+  -webkit-box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.4);
+  padding: 10px;
   -webkit-animation: slide_r 1.5s ease;
           animation: slide_r 1.5s ease;
   -webkit-transform: translate(0px, 0px);
       -ms-transform: translate(0px, 0px);
           transform: translate(0px, 0px);
   position: relative;
+  top: 5px;
+  left: 5px;
   z-index: 1;
+}
+
+.item:hover {
+  -webkit-transition: .5s;
+  -o-transition: .5s;
+  transition: .5s;
+  -webkit-transform: scale(1.025, 1.025) !important;
+      -ms-transform: scale(1.025, 1.025) !important;
+          transform: scale(1.025, 1.025) !important;
+}
+
+.item img {
+  max-width: 220px;
+  max-height: 165px;
 }
 
 @keyframes slide_r {
@@ -1097,26 +1129,6 @@ button {
     -webkit-transform: translate(0px, 0px);
             transform: translate(0px, 0px);
   }
-}
-
-.item {
-  -webkit-box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.4);
-  box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.4);
-  padding: 10px;
-}
-
-.item:hover {
-  -webkit-transition: .5s;
-  -o-transition: .5s;
-  transition: .5s;
-  -webkit-transform: scale(1.025, 1.025);
-      -ms-transform: scale(1.025, 1.025);
-          transform: scale(1.025, 1.025);
-}
-
-.item img {
-  max-width: 220px;
-  max-height: 165px;
 }
 
 .bout__item {
@@ -1171,7 +1183,7 @@ button {
   max-width: 300px;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 25px;
-  margin: 90px 200px;
+  margin: 50px 200px;
 }
 
 .page__btn {
@@ -1501,6 +1513,34 @@ button {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-animation: s 1s ease;
+          animation: s 1s ease;
+  position: relative;
+  z-index: 1;
+}
+
+@-webkit-keyframes s {
+  0% {
+    -webkit-transform: translate3d(-300px, -300px, -3000px);
+            transform: translate3d(-300px, -300px, -3000px);
+  }
+
+  100% {
+    -webkit-transform: translate3d(0px, 0px, 0px);
+            transform: translate3d(0px, 0px, 0px);
+  }
+}
+
+@keyframes s {
+  0% {
+    -webkit-transform: translate3d(-300px, -300px, -3000px);
+            transform: translate3d(-300px, -300px, -3000px);
+  }
+
+  100% {
+    -webkit-transform: translate3d(0px, 0px, 0px);
+            transform: translate3d(0px, 0px, 0px);
+  }
 }
 
 .big__picture {
@@ -1537,7 +1577,7 @@ button {
 }
 
 .appear {
-  z-index: 2;
+  z-index: 3;
 }
 
 .sho__pic {
