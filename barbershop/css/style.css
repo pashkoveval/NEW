@@ -1665,6 +1665,90 @@ button {
           transform: rotateZ(45deg);
 }
 
+@media (max-width: 970px) {
+  .menu {
+    grid-template-columns: repeat(6, auto);
+    grid-gap: 10px;
+  }
+
+  .enter {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: end;
+  }
+
+  .columns,
+  .wight {
+    max-width: 740px;
+    height: auto;
+  }
+
+  button {
+    width: 150px;
+    height: 44px;
+  }
+
+  .info {
+    padding: 10px;
+  }
+
+  .enterblok {
+    top: 150px;
+    left: 25%;
+    width: 400px;
+    height: 355px;
+    padding: 45px;
+  }
+
+  .enterblok .clouse {
+    top: 150px;
+    right: 24.5%;
+  }
+
+  .enterblok .man {
+    top: 140px;
+    right: 50px;
+  }
+
+  .enterblok .lock {
+    top: 200px;
+    right: 50px;
+  }
+
+  .map {
+    position: fixed;
+    top: 200px;
+    width: 300px;
+    height: 300px;
+    padding: 10px;
+    z-index: 3;
+    background: #000;
+  }
+
+  .map iframe {
+    width: 280px;
+    height: 280px;
+  }
+
+  .exit {
+    position: fixed;
+    top: 200px;
+    right: 30%;
+  }
+
+  .shop__box {
+    min-height: 800px !important;
+  }
+
+  .mainbar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .container {
+    max-width: 740px !important;
+  }
+}
+
 .webp .wrapper{ background: url(../img/bg.webp) top no-repeat #000; }
 
 .webp .footer{ background: url(../img/fbg.webp); }
