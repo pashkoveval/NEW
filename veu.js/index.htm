@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My first Vue app</title>
+  <script src="https://unpkg.com/vue"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="wrapper" class="df">
+
+    <div class="user__block df center">
+
+
+
+      <!-- блок с отобродением контакта -->
+      <div class="user df">
+        <div v-for="(user,index) in users" class="user__info df">
+          <!-- выводим имя контакта -->
+          <span @click="user.id = !user.id">{{ user.name }}</span>
+          <!-- выводим фамилию контакта -->
+          <span @click="user.id = !user.id">{{ user.lastName }}</span>
+          <!-- кнопка удоления контакта -->
+          <div @click="delet = !delet" class="cheng">🗑️</div>
+        </div>
+        <!-- добовляет контакт -->
+        <div class="plus df" @click="addUser = !addUser">
+          <span>+</span>
+        </div>
+      </div>
+
+      <!-- форма заполнения для добовления контакта -->
+      <div class="form border df" v-show="addUser">
+        <form action="#">
+          <input class="border" type="text" v-model="newName" placeholder="Введите имя" maxlength="15">
+          <input class="border" type="text" v-model="newLastName" placeholder="Введите фамилию" maxlength="20">
+          <input class="border" type="text" v-model="phone" placeholder="Введите телефон">
+          <input class="border" type="text" v-model="email" placeholder="Введите Email">
+          <button class="add border" @click="push(),addUser = !addUser">Добавить</button>
+        </form>
+      </div>
+
+      <!-- кнопка удоление всех контактов -->
+      <div class="delit" @click="vis = !vis,del = del">Удолить все контакты</div>
+
+      <!-- блок выбраного из контактов пользователя -->
+      <div v-for="(user,index) in users" class="user__inf df border center" v-show="user.id">
+        <div class="head df">
+          <!-- иконка -->
+          <div class="img df"><img src="laptop.svg" alt=""></div>
+
+          <div class="user__name df">
+            <!-- имя пользователя для изминения и просмотра -->
+            <input v-model="user.name" type="text" value="user.name" :disabled="disablid">
+            <!-- фамилия пользователя для изминения и просмотра -->
+            <input v-model="user.lastName" type="text" value="user.lastName" :disabled="disablid">
+          </div>
+        </div>
+        <!-- контактная информация выбраного пользователя -->
+        <div class="contacts df">
+          <!-- телефон пользователя для изминения и просмотра -->
+          <div class="row df" v-show="user.id">
+            Телефон:
+            <input class="df" v-model="user.phone" type="text" value="user.phone" :disabled="disablid"></div>
+          <!-- имейл пользователя для изминения и просмотра -->
+          <div class="row df" v-show="user.id">
+            Email:
+            <input class="df" v-model="user.email" type="text" value="user.email" :disabled="disablid"></div>
+        </div>
+        <div class="btn__block df">
+          <!-- кнопка возврата ко всем контактам -->
+          <div class="border cursor btn__back" @click="user.id = !user.id">Назад</div>
+          <!-- кнопка редоктирования -->
+          <div class="border cursor btn__redux" v-if="disablid = disablid" @click="disablid = !disablid">
+            Редоктировать</div>
+          <!-- кнопка сохронения редоктирования -->
+          <div class="border cursor btn__redux" v-else="disablid = !disablid"
+            @click="disablid = !disablid,push2()">Сохранить ?</div>
+          <!-- кнопка удоления выбраного контакта -->
+          <div class="border cursor btn__del" @click="delet = !delet">Удолить ?</div>
+        </div>
+
+      </div>
+      <!-- всплывающее окно удоления всех контактов -->
+      <div class="alarm df border" v-show="vis" v-for="(user,index) in users">
+        <div class="aus border">
+          <span> {{delAll}} </span>
+          <div class="ansver df">
+            <div class="border btn__del" @click="users.splice(0,users.length)">Да</div>
+            <div class="border btn__back" @click="vis = !vis">Нет</div>
+          </div>
+        </div>
+      </div>
+      <!-- всплывающее окно удоления выбраного контакта -->
+      <div class="alarm df border" v-show="delet" v-for="(user,index) in users">
+        <div class="aus border">
+          <span> {{delUser}} </span>
+          <div class="ansver df">
+            <div class="border btn__del" @click="del(index,1),delet = !delet">Да</div>
+            <div class="border btn__back" @click="delet = !delet">Нет</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js.js"></script>
+</body>
+
+</html>
